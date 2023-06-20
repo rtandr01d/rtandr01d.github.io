@@ -6,9 +6,35 @@
     <description>Recent content on Andr01ds Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 May 2023 13:45:17 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 04 May 2023 13:45:20 -0500</lastBuildDate>
     
 	<atom:link href="https://rtandr01d.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <item>
+      <title>Phoenix ARM Stack Five</title>
+      <link>https://rtandr01d.net/posts/phoenix-arm-stack-five/</link>
+      <pubDate>Thu, 04 May 2023 13:45:20 -0500</pubDate>
+      
+      <guid>https://rtandr01d.net/posts/phoenix-arm-stack-five/</guid>
+      <description>&lt;p&gt;Stack five take our exploits to the next step. While we can fill a buffer and achieve a buffer overflow, this time we want to execute shellcode which we provide as part of the exploit. Lets take a look at our source code.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://rtandr01d.net/posts/images/stackfivesource.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We can see the main function prints the banner and runs the start_level() function. This function uses the well-known &amp;lsquo;gets&amp;rsquo; function, and puts the user&amp;rsquo;s input into &amp;lsquo;buffer&amp;rsquo;. The buffer is 128 characters long, so our PoC should be close to this length. Filling the buffer with the right amount of chars, we should see a segmentation fault.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://rtandr01d.net/posts/images/stackfiveinitialsegfault.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;In gdb, we can disassemble start_level and insert a breakpoint right after gets to take a look at what is happening with our input and registers.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://rtandr01d.net/posts/images/stackfivestartleveldisass.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;In start_level, our buffer is put into $r11-132, which is 0xfffef640. Knowing that we are overflowing our buffer, and that we know where the buffer is being put, we could control the program execution to land on our own shellcode! Lets find out where we are overflowing with the buffer to determine where we can control the execution.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://rtandr01d.net/posts/images/stackfivecyclic.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://rtandr01d.net/posts/images/stackfiveillegalinstruction.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We get an Illegal instruciton error. $R11 is set to &amp;ldquo;haab&amp;rdquo;, and if we take a look at the main function, we can see $PC is popped to $R11. This means &amp;ldquo;haab&amp;rdquo; is the program counter giving us the position we can start controlling the flow of the program. The next thing to handle is where to direct the program. Even through we have the address of the beginning of our stack, it is common to use a NOP sled for our shellcode to be executed properly.&lt;/p&gt;
+&lt;p&gt;I have created the following program to set up our payload, including the NOP sled, the shellcode (in this case runing /bin/dash), the rest of the buffer and the address of where I want the program execution to land. I give an address that is a bit after the beginning of our buffer, as if I attempted to start at the beginning of the buffer, the program would not continue execution.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://rtandr01d.net/posts/images/stackfiveexploitcode.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Getting this input to be accepted by the program was quite dificult. I am still not entirely sure I understand why it must be done in this way, however here is the process. Keep in mind, this is python2.7 as strings are handled differently in python3&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://rtandr01d.net/posts/images/stackfivepython.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Success!&lt;/p&gt;
+</description>
+    </item>
     
     
     
