@@ -6,9 +6,28 @@
     <description>Recent content on Andr01ds Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 May 2023 13:45:20 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 19 Jun 2023 22:34:07 -0500</lastBuildDate>
     
 	<atom:link href="https://rtandr01d.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <item>
+      <title>Phoenix ARM Format Zero</title>
+      <link>https://rtandr01d.net/posts/phoenix-arm-format-zero/</link>
+      <pubDate>Mon, 19 Jun 2023 22:34:07 -0500</pubDate>
+      
+      <guid>https://rtandr01d.net/posts/phoenix-arm-format-zero/</guid>
+      <description>&lt;p&gt;Now that I have rounded off the stack challenges, now I will move on to the Format Strings challenges. Format Strings is a vulnerability where the input of the user is not santizied for special characters correctly, allowing the input to be a &amp;ldquo;format&amp;rdquo; string telling the program what kind of string should be returned. This can create situations where the user can read or modify memory.&lt;/p&gt;
+&lt;p&gt;In the first challenge, the objective is simply to change a variable which the user does not have direct control over. Taking a look at the source code, we can see there is an &amp;lsquo;sprintf&amp;rsquo; call which attempts to print the contents of buffer into locals.dest.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://rtandr01d.net/posts/images/formatzerosource.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Within the locals struct, we can see the char buffer dest and integer changeme. We want to overwrite changeme, and we have 32 characters to fill the dest buffer with before we can do this. However, our input buffer is only 16 characters long. How can we overcome this?&lt;/p&gt;
+&lt;p&gt;As I mentioned before, a format strings vulnerability allows for us to tell the program what format of input we are trying to supply. Due to this issue, we can provide input which, when interpreted by the machine, will fill the dest buffer (during the sprintf) with information of the size we are providing.&lt;/p&gt;
+&lt;p&gt;In this example, I decided to use the &amp;ldquo;%x&amp;rdquo; format. I can only provide up to 16 of these, however each %x will fill 8 bytes of the dest buffer, thus providing the overflow to change the changeme variable.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://rtandr01d.net/posts/images/formatzerosuccess.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Success.&lt;/p&gt;
+</description>
+    </item>
     
     
     
