@@ -41,7 +41,6 @@
 <p>We could run into an issue here. Arm has two addressing modes - Thumb Mode and Arm Mode. The Thumb instruction set conists of 16-bit instructions compared to the standard 32-bit instructions of ARM mode. The choice between these two modes is decided using the Least Significant Bit of our Prgram Counter register. As an example, if we overflow our buffer and provide $pc with the address &lsquo;0x00010545&rsquo;, $pc will instead continue past our input and exit the function as the LSB of the address is an odd number, telling the processor to take 16 bit instructions.</p>
 <p>Luckliy, however, the address we are jumping to has an address ending in an even number, meaning the program will branch to the &lsquo;complete_level&rsquo; function.</p>
 <p>Success!</p>
-<p><img src="/posts/images/stackfoursuccess.png" alt="img"></p>
 </article>
 
         </main><footer id="footer">
