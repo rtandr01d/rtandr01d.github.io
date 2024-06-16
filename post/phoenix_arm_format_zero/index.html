@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <title>Phoenix_arm_zero // My Blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.126.3">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="/css/main.min.5b1fcc8902588589c4767187402a3c29f8b8d7a6fdef6d9f8f77045bb0d14fee.css" />
+    
+
+    
+  
+
+
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Phoenix_arm_zero">
+  <meta name="twitter:description" content="Phoenix ARM Format Zero June 19, 2023
+Now that I have rounded off the stack challenges, now I will move on to the Format Strings challenges. Format Strings is a vulnerability where the input of the user is not santizied for special characters correctly, allowing the input to be a “format” string telling the program what kind of string should be returned. This can create situations where the user can read or modify memory.">
+
+    <meta property="og:url" content="http://localhost:1313/post/phoenix_arm_format_zero/">
+  <meta property="og:site_name" content="My Blog">
+  <meta property="og:title" content="Phoenix_arm_zero">
+  <meta property="og:description" content="Phoenix ARM Format Zero June 19, 2023
+Now that I have rounded off the stack challenges, now I will move on to the Format Strings challenges. Format Strings is a vulnerability where the input of the user is not santizied for special characters correctly, allowing the input to be a “format” string telling the program what kind of string should be returned. This can create situations where the user can read or modify memory.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-06-13T21:16:32-05:00">
+    <meta property="article:modified_time" content="2024-06-13T21:16:32-05:00">
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="http://localhost:1313/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <span class="app-header-title">My Blog</span>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/blog/">Blog</a>
+      </nav>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/rtandr01d" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://defcon.social/@andr01d" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-link">
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Phoenix_arm_zero</h1>
+      <div class="post-meta">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jun 13, 2024
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h1 id="phoenix-arm-format-zero">Phoenix ARM Format Zero</h1>
+<p>June 19, 2023</p>
+<p>Now that I have rounded off the stack challenges, now I will move on to the Format Strings challenges. Format Strings is a vulnerability where the input of the user is not santizied for special characters correctly, allowing the input to be a “format” string telling the program what kind of string should be returned. This can create situations where the user can read or modify memory.</p>
+<p>In the first challenge, the objective is simply to change a variable which the user does not have direct control over. Taking a look at the source code, we can see there is an ‘sprintf’ call which attempts to print the contents of buffer into locals.dest.</p>
+<p><img src="/posts/images/formatzerosource.png" alt="img"></p>
+<p>Within the locals struct, we can see the char buffer dest and integer changeme. We want to overwrite changeme, and we have 32 characters to fill the dest buffer with before we can do this. However, our input buffer is only 16 characters long. How can we overcome this?</p>
+<p>As I mentioned before, a format strings vulnerability allows for us to tell the program what format of input we are trying to supply. Due to this issue, we can provide input which, when interpreted by the machine, will fill the dest buffer (during the sprintf) with information of the size we are providing.</p>
+<p>In this example, I decided to use the “%x” format. I can only provide up to 16 of these, however each %x will fill 8 bytes of the dest buffer, thus providing the overflow to change the changeme variable.</p>
+<p><img src="/posts/images/formatzerosuccess.png" alt="img"></p>
+<p>Success.</p>
+<p>@andr01d@defcon.social</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
