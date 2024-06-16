@@ -2,41 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://rtandr01d.net/</loc>
     <lastmod>2024-06-13T21:46:30-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/calling-functions-from-shared-object-file-for-fuzzing-and-debugging/</loc>
+    <loc>https://rtandr01d.net/post/</loc>
     <lastmod>2024-06-13T21:46:30-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2024-06-13T21:46:30-05:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/post/petitpotam_lab/</loc>
+    <loc>https://rtandr01d.net/post/petitpotam_lab/</loc>
     <lastmod>2024-06-13T21:43:04-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/phoenix-arm-stack-zero/</loc>
+    <loc>https://rtandr01d.net/post/phoenix-arm-stack-zero/</loc>
     <lastmod>2024-06-13T21:20:12-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/phoenix-arm-stack-one/</loc>
+    <loc>https://rtandr01d.net/post/phoenix-arm-stack-one/</loc>
     <lastmod>2024-06-13T21:20:10-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/phoenix-arm-stack-two/</loc>
+    <loc>https://rtandr01d.net/post/phoenix-arm-stack-two/</loc>
     <lastmod>2024-06-13T21:20:07-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/phoenix-arm-stack-three/</loc>
+    <loc>https://rtandr01d.net/post/phoenix-arm-stack-three/</loc>
     <lastmod>2024-06-13T21:19:34-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/phoenix-arm-stack-four/</loc>
+    <loc>https://rtandr01d.net/post/phoenix-arm-stack-four/</loc>
     <lastmod>2024-06-13T21:19:05-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/phoenix-arm-stack-five/</loc>
+    <loc>https://rtandr01d.net/post/phoenix-arm-stack-five/</loc>
     <lastmod>2024-06-13T21:17:40-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/phoenix-arm-format-zero/</loc>
+    <loc>https://rtandr01d.net/post/phoenix-arm-format-zero/</loc>
     <lastmod>2024-06-13T21:16:32-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://rtandr01d.net/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://rtandr01d.net/tags/</loc>
   </url>
 </urlset>

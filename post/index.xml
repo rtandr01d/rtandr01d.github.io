@@ -2,73 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on </title>
-    <link>http://localhost:1313/post/</link>
+    <link>https://rtandr01d.net/post/</link>
     <description>Recent content in Posts on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Jun 2024 21:46:30 -0500</lastBuildDate>
-    <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Calling Functions From Shared Object File for Fuzzing and Debugging</title>
-      <link>http://localhost:1313/post/calling-functions-from-shared-object-file-for-fuzzing-and-debugging/</link>
-      <pubDate>Thu, 13 Jun 2024 21:46:30 -0500</pubDate>
-      <guid>http://localhost:1313/post/calling-functions-from-shared-object-file-for-fuzzing-and-debugging/</guid>
-      <description>Its been a while since I last wrote a post here, the majority on this site were migrated from an older hugo generated template, which will explain the timestamps on the posts.&#xA;I have been busy in my career pivoting away from what we typically think of pentesting (testing broad external/internal networks for known vulnerabilities, running nessus and validating, etc) and towards where my interest currently lies: vulnerability research and binary exploitation.</description>
-    </item>
+    <lastBuildDate>Thu, 13 Jun 2024 21:43:04 -0500</lastBuildDate>
+    <atom:link href="https://rtandr01d.net/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setting Up A Petit Potam Lab</title>
-      <link>http://localhost:1313/post/petitpotam_lab/</link>
+      <link>https://rtandr01d.net/post/petitpotam_lab/</link>
       <pubDate>Thu, 13 Jun 2024 21:43:04 -0500</pubDate>
-      <guid>http://localhost:1313/post/petitpotam_lab/</guid>
+      <guid>https://rtandr01d.net/post/petitpotam_lab/</guid>
       <description>April 14, 2023&#xA;The PetitPotam vulnerability has been around for quite some time now, but there is frighteningly little information on how to set up this attack as a lab. There is a decent writeup on it over on DirkJanm’s page however his setup relies on using delegation to set up up a new machine to the domain. My idea of a good lab setup for PetitPotam is relaying the machine account of our vulnerable target to the ADCS server and creating a CSR for that machine account.</description>
     </item>
     <item>
       <title>Phoenix Arm Stack Zero</title>
-      <link>http://localhost:1313/post/phoenix-arm-stack-zero/</link>
+      <link>https://rtandr01d.net/post/phoenix-arm-stack-zero/</link>
       <pubDate>Thu, 13 Jun 2024 21:20:12 -0500</pubDate>
-      <guid>http://localhost:1313/post/phoenix-arm-stack-zero/</guid>
+      <guid>https://rtandr01d.net/post/phoenix-arm-stack-zero/</guid>
       <description>I realize writing up every Protostar/Phoenix exercise has been done a million times over, but this is for my own notes and to track my progress.&#xA;Stack Zero is a classic buffer overflow. With the source code handy, we can see there is a buffer of 64 characters and the method gets is used:&#xA;Once locals.changeme is set to anything other than 1, we get a success. This is easy to accomplish via printing 65 A’s and providing them as input:</description>
     </item>
     <item>
       <title>Phoenix Arm Stack One</title>
-      <link>http://localhost:1313/post/phoenix-arm-stack-one/</link>
+      <link>https://rtandr01d.net/post/phoenix-arm-stack-one/</link>
       <pubDate>Thu, 13 Jun 2024 21:20:10 -0500</pubDate>
-      <guid>http://localhost:1313/post/phoenix-arm-stack-one/</guid>
+      <guid>https://rtandr01d.net/post/phoenix-arm-stack-one/</guid>
       <description>Stack one is very similar to stack zero with a buffer overflow, however the objective is to insert a certain value into locales.changeme. We see in the source code that the new comparrison for locals.changeme is for the value 0x496c5962.&#xA;We can decode this hex value to be IlYb. Since ARM is little-endian, when we try to set the value here, we will need to reverse the string as when the value will be read, it will be interpreted in reverse order.</description>
     </item>
     <item>
       <title>Phoenix Arm Stack Two</title>
-      <link>http://localhost:1313/post/phoenix-arm-stack-two/</link>
+      <link>https://rtandr01d.net/post/phoenix-arm-stack-two/</link>
       <pubDate>Thu, 13 Jun 2024 21:20:07 -0500</pubDate>
-      <guid>http://localhost:1313/post/phoenix-arm-stack-two/</guid>
+      <guid>https://rtandr01d.net/post/phoenix-arm-stack-two/</guid>
       <description>Stack two is similar to the stack one, however this binary will take a environment variable as the string. If we take a look at the source code, we can see there is a check for the environment variable before copying the string in environment variable over, meaning we cannot continue with the exploit without atleast setting the variable.&#xA;We can also see this in the branch instruction to getenv within the main function:</description>
     </item>
     <item>
       <title>Phoenix Arm Stack Three</title>
-      <link>http://localhost:1313/post/phoenix-arm-stack-three/</link>
+      <link>https://rtandr01d.net/post/phoenix-arm-stack-three/</link>
       <pubDate>Thu, 13 Jun 2024 21:19:34 -0500</pubDate>
-      <guid>http://localhost:1313/post/phoenix-arm-stack-three/</guid>
+      <guid>https://rtandr01d.net/post/phoenix-arm-stack-three/</guid>
       <description>May 4, 2023&#xA;In previous challenges, the purpose of overflowing the buffer and changing a variable was to meet a condition which checked that the variable had changed at all. Looking at the source code for stack-three, we can see the variable we are overwriting happens to be a function pointer. Notice there is a function called ‘complete_level’ which will be helpful when we overwrite the function pointer.&#xA;We know we can keep the 64 character buffer to achieve the overflow, but how can we know the address of the ‘complete_level’ function?</description>
     </item>
     <item>
       <title>Phoenix Arm Stack Four</title>
-      <link>http://localhost:1313/post/phoenix-arm-stack-four/</link>
+      <link>https://rtandr01d.net/post/phoenix-arm-stack-four/</link>
       <pubDate>Thu, 13 Jun 2024 21:19:05 -0500</pubDate>
-      <guid>http://localhost:1313/post/phoenix-arm-stack-four/</guid>
+      <guid>https://rtandr01d.net/post/phoenix-arm-stack-four/</guid>
       <description>May 4, 2023&#xA;Stack four carries the same idea s stack three where we want to control the program’s next execution. But instead of using a function pointer which the program had defined (therefore existed just beyod our buffer on the stack), we are trying to control the program counter ($pc).&#xA;This means we need to fill our buffer enough to control the $pc register. To do this, we can use pwntools to create a string long enough to fill our buffer and then some, and find where $pc is being filled with this buffer.</description>
     </item>
     <item>
       <title>Phoenix Arm Stack Five</title>
-      <link>http://localhost:1313/post/phoenix-arm-stack-five/</link>
+      <link>https://rtandr01d.net/post/phoenix-arm-stack-five/</link>
       <pubDate>Thu, 13 Jun 2024 21:17:40 -0500</pubDate>
-      <guid>http://localhost:1313/post/phoenix-arm-stack-five/</guid>
+      <guid>https://rtandr01d.net/post/phoenix-arm-stack-five/</guid>
       <description>May 4, 2023&#xA;Stack five take our exploits to the next step. While we can fill a buffer and achieve a buffer overflow, this time we want to execute shellcode which we provide as part of the exploit. Lets take a look at our source code.&#xA;We can see the main function prints the banner and runs the start_level() function. This function uses the well-known ‘gets’ function, and puts the user’s input into ‘buffer’.</description>
     </item>
     <item>
       <title>Phoenix Arm Zero</title>
-      <link>http://localhost:1313/post/phoenix-arm-format-zero/</link>
+      <link>https://rtandr01d.net/post/phoenix-arm-format-zero/</link>
       <pubDate>Thu, 13 Jun 2024 21:16:32 -0500</pubDate>
-      <guid>http://localhost:1313/post/phoenix-arm-format-zero/</guid>
+      <guid>https://rtandr01d.net/post/phoenix-arm-format-zero/</guid>
       <description>June 19, 2023&#xA;Now that I have rounded off the stack challenges, now I will move on to the Format Strings challenges. Format Strings is a vulnerability where the input of the user is not santizied for special characters correctly, allowing the input to be a “format” string telling the program what kind of string should be returned. This can create situations where the user can read or modify memory.</description>
     </item>
   </channel>
