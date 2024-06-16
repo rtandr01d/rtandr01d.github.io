@@ -6,8 +6,15 @@
     <description>Recent content in Posts on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Jun 2024 21:43:04 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 13 Jun 2024 21:46:30 -0500</lastBuildDate>
     <atom:link href="https://rtandr01d.net/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Calling Functions From Shared Object File for Fuzzing and Debugging</title>
+      <link>https://rtandr01d.net/post/calling-functions-from-shared-object-file-for-fuzzing-and-debugging/</link>
+      <pubDate>Thu, 13 Jun 2024 21:46:30 -0500</pubDate>
+      <guid>https://rtandr01d.net/post/calling-functions-from-shared-object-file-for-fuzzing-and-debugging/</guid>
+      <description>Its been a while since I last wrote a post here, the majority on this site were migrated from an older hugo generated template, which will explain the timestamps on the posts.&#xA;I have been busy in my career pivoting away from what we typically think of pentesting (testing broad external/internal networks for known vulnerabilities, running nessus and validating, etc) and towards where my interest currently lies: vulnerability research and binary exploitation.</description>
+    </item>
     <item>
       <title>Setting Up A Petit Potam Lab</title>
       <link>https://rtandr01d.net/post/petitpotam_lab/</link>
